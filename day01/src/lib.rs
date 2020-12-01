@@ -22,35 +22,39 @@ fn part1(input: Vec<i32>) -> i32 {
     // find pair in input that sum to 2020 and return the product of the pair
     // input: [1721, 979, 366, 299, 675, 1456]
     // return: 514579 (1721 * 299)
+
+    // convert intput Vector to a HashSet for quicker membership checking
     let input_set: HashSet<i32> = input.clone().into_iter().collect();
     for i in input {
-        if input_set.contains(&(2020 - i)) {
-            return i * (2020 - i);
+        let target = 2020 - i;
+        if input_set.contains(&target) {
+            return i * target;
         }
     }
-    return -1;
+    return -1; // invalid input
 }
 
 fn part2(input: Vec<i32>) -> i32 {
     // find three inputs that sum to 2020 and return their product
     // input: [1721, 979, 366, 299, 675, 1456]
     // return: 241861950 (979 * 366 * 675)
-    // 
+    //
     // 2020 - 1721 = 299, nothing small
     // 2020 - 979 = 1041; 366 + 675 = 1041
-    let  input_set: HashSet<i32> = input.clone().into_iter().collect();
+    let input_set: HashSet<i32> = input.clone().into_iter().collect();
     for i in input {
         let target = 2020 - i;
+        // search through input excluding i
         let mut search = input_set.clone();
         search.remove(&i);
+        // see if anything remainin in search sums to target (2020 - i)
         for j in &search {
             if search.contains(&(target - j)) {
-                return i * j * (target - j)
+                return i * j * (target - j);
             }
         }
-
     }
-    return -1;
+    return -1; // invalid input
 }
 
 #[cfg(test)]
@@ -82,7 +86,9 @@ mod tests {
             1744, 1858, 1705, 1794, 1944, 1973, 1960, 1887, 1804, 1913, 1770, 1825, 1737, 1799,
             1532,
         ];
-        assert_eq!(part1(input), 802011);
+        let result = part1(input.clone());
+        println!("part1({:?}) returned: {}\n", input, result);
+        assert_eq!(result, 802011);
     }
 
     #[test]
@@ -109,8 +115,9 @@ mod tests {
             1367, 1902, 1698, 1912, 1818, 1615, 1851, 1564, 1719, 1952, 1616, 1988, 1768, 1957,
             1744, 1858, 1705, 1794, 1944, 1973, 1960, 1887, 1804, 1913, 1770, 1825, 1737, 1799,
             1532,
-        ]; 
-        assert_eq!(part2(input), 248607374);
-
+        ];
+        let result = part2(input.clone());
+        println!("part2({:?}) returned: {}\n", input, result);
+        assert_eq!(result, 248607374);
     }
 }
