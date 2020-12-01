@@ -18,7 +18,7 @@ impl Problem for Day01 {
     }
 }
 
-fn part1(input: Vec<i32>) -> i32 {
+fn part1(input: &Vec<i32>) -> i32 {
     // find pair in input that sum to 2020 and return the product of the pair
     // input: [1721, 979, 366, 299, 675, 1456]
     // return: 514579 (1721 * 299)
@@ -34,7 +34,7 @@ fn part1(input: Vec<i32>) -> i32 {
     return -1; // invalid input
 }
 
-fn part2(input: Vec<i32>) -> i32 {
+fn part2(input: &Vec<i32>) -> i32 {
     // find three inputs that sum to 2020 and return their product
     // input: [1721, 979, 366, 299, 675, 1456]
     // return: 241861950 (979 * 366 * 675)
@@ -64,7 +64,7 @@ mod tests {
     #[test]
     fn part1_sample() {
         let input = vec![1721, 979, 366, 299, 675, 1456];
-        assert_eq!(part1(input), 514579);
+        assert_eq!(part1(&input), 514579);
     }
 
     #[test]
@@ -86,7 +86,7 @@ mod tests {
             1744, 1858, 1705, 1794, 1944, 1973, 1960, 1887, 1804, 1913, 1770, 1825, 1737, 1799,
             1532,
         ];
-        let result = part1(input.clone());
+        let result = part1(&input);
         println!("part1({:?}) returned: {}\n", input, result);
         assert_eq!(result, 802011);
     }
@@ -94,7 +94,7 @@ mod tests {
     #[test]
     fn part2_sample() {
         let input = vec![1721, 979, 366, 299, 675, 1456];
-        assert_eq!(part2(input), 241861950);
+        assert_eq!(part2(&input), 241861950);
     }
 
     #[test]
@@ -116,7 +116,7 @@ mod tests {
             1744, 1858, 1705, 1794, 1944, 1973, 1960, 1887, 1804, 1913, 1770, 1825, 1737, 1799,
             1532,
         ];
-        let result = part2(input.clone());
+        let result = part2(&input);
         println!("part2({:?}) returned: {}\n", input, result);
         assert_eq!(result, 248607374);
     }
