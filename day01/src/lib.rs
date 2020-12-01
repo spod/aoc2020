@@ -1,19 +1,28 @@
 use prob::Problem;
-use std::collections::HashSet;
-use std::error::Error;
+use std::{collections::HashSet, io::BufRead};
 
-pub struct Day01 {}
+pub struct Day01 {
+    input: Vec<i32>,
+}
 
 impl Problem for Day01 {
-    fn part_1(&self) -> Result<i32, Box<dyn Error>> {
-        todo!()
+    fn part_1(&self) -> Result<i32, &str> {
+        let result = part1(&self.input);
+        return match result {
+            -1 => Err("invalid input"),
+            _ => Ok(result),
+        };
     }
 
-    fn part_2(&self) -> Result<i32, Box<dyn Error>> {
-        todo!()
+    fn part_2(&self) -> Result<i32, &str> {
+        let result = part2(&self.input);
+        return match result {
+            -1 => Err("invalid input"),
+            _ => Ok(result),
+        };
     }
 
-    fn new(&self, _inputfile: String) -> &'static dyn Problem {
+    fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
         todo!()
     }
 }

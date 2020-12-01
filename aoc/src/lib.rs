@@ -1,5 +1,3 @@
-use std::error::Error;
-
 pub struct Config {
     pub day: i32,
 }
@@ -20,10 +18,12 @@ impl Config {
     }
 }
 
-pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+pub fn run(config: Config) -> Result<(), &'static str> {
     match config.day {
-        1 => println!("TODO run day 1 ..."),
-        _ => eprintln!("Solution not implemented yet!"),
+        1 => {
+            println!("TODO run day 1 part a and b here");
+            Ok(())
+        }
+        _ => Err("Solution not implemented yet!"),
     }
-    Ok(())
 }
