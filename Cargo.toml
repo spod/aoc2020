@@ -1,0 +1,12 @@
+[workspace]
+
+members = [
+    # code shared across daily solutions
+    "prob",
+
+    # cli
+    "aoc",
+
+    # daily solutions
+    "day01",
+]
