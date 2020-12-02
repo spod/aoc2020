@@ -2,9 +2,7 @@ use prob::Problem;
 use std::fs;
 use std::io::BufRead;
 
-pub struct Day02 {
-    input: Vec<i32>,
-}
+pub struct Day02 {}
 
 impl Problem for Day02 {
     fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
@@ -31,7 +29,6 @@ fn valid_password_real(input: &str) -> bool {
     let m1 = passwd.chars().nth(p1 - 1).unwrap();
     let m2 = passwd.chars().nth(p2 - 1).unwrap();
     //println!("for input: {}, chr: {}; m1: {} & m2: {}", &passwd, &chr, &m1, &m2);
-    //m1 ^ m2
     (m1 == chr) ^ (m2 == chr)
 }
 
@@ -101,21 +98,15 @@ mod tests {
     }
     #[test]
     fn day02_part1_real() {
-        // let input = vec![1, 2, 3];
-        // let result = part1(&input);
-        // println!("part1({:?}) returned: {}\n", input, result);
-        // assert_eq!(result, 42);
-        assert_eq!(part1(), 643);
+        let result = part1();
+        println!("part1() returned: {}\n", result);
+        assert_eq!(result, 643);
     }
-
-    // #[test]
-    // fn day02_part2_sample() {
-    //     let input = vec![1, 2, 3];
-    //     assert_eq!(part2(&input), 42);
-    // }
 
     #[test]
     fn day02_part2_real() {
-        assert_eq!(part2(), 388);
+        let result = part2();
+        println!("part2() returned: {}\n", result);
+        assert_eq!(result, 388);
     }
 }

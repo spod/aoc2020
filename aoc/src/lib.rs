@@ -20,8 +20,8 @@ impl Config {
 
 pub fn run(config: Config) -> Result<(), &'static str> {
     match config.day {
-        1 | 2 => {
-            println!("TODO run day 1 or 2 part a and b here");
+        1..=31 => {
+            println!("TODO run day {} parts a & b", config.day);
             Ok(())
         }
         _ => Err("Solution not implemented yet!"),
