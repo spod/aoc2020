@@ -71,13 +71,13 @@ mod tests {
 
     use crate::*;
     #[test]
-    fn part1_sample() {
+    fn day01_part1_sample() {
         let input = vec![1721, 979, 366, 299, 675, 1456];
         assert_eq!(part1(&input), 514579);
     }
 
     #[test]
-    fn part1_real() {
+    fn day01_part1_real() {
         let input = vec![
             2004, 1867, 1923, 1819, 1940, 1675, 1992, 1728, 2006, 1578, 1630, 1893, 1910, 1509,
             1569, 1967, 1917, 1922, 1919, 1813, 1870, 370, 1617, 1600, 1729, 503, 1856, 1842, 1990,
@@ -101,13 +101,13 @@ mod tests {
     }
 
     #[test]
-    fn part2_sample() {
+    fn day01_part2_sample() {
         let input = vec![1721, 979, 366, 299, 675, 1456];
         assert_eq!(part2(&input), 241861950);
     }
 
     #[test]
-    fn part2_real() {
+    fn day01_part2_real() {
         let input = vec![
             2004, 1867, 1923, 1819, 1940, 1675, 1992, 1728, 2006, 1578, 1630, 1893, 1910, 1509,
             1569, 1967, 1917, 1922, 1919, 1813, 1870, 370, 1617, 1600, 1729, 503, 1856, 1842, 1990,
