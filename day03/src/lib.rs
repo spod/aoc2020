@@ -26,16 +26,19 @@ fn part1(input: Vec<&str>) -> i8 {
     let mut count = 0;
     let mut x = 0;
     let mut y = 0;
+    println!(
+        "x, y at start: {},{}; grid[{}][{}]: {}",
+        x, y, x, y, grid[y][x]
+    );
     while y < grid.len() - 1 {
-        println!("x,y at start: {},{}", x, y);
         x = (x + x_move) % wrap;
         y = y + y_move;
-        println!("x,y after step: {},{}", x, y);
-        println!("grid[x][y]: {}", grid[x][y]);
-        if grid[x][y] == 1 {
-            println!("Ow!");
+        if grid[y][x] == 1 {
+            println!("moved to grid[{}][{}]: {} - Ow!", x, y, grid[y][x]);
+        } else {
+            println!("moved to grid[{}][{}]: {}", x, y, grid[y][x]);
         }
-        count = count + grid[x][y];
+        count = count + grid[y][x];
     }
     println!("count: {}", count);
     count
