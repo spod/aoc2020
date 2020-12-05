@@ -2,7 +2,7 @@
 default:	fmt build run
 
 # TODO source from os env
-day = 02
+day = 04
 
 build:
 	#@cargo build --quiet

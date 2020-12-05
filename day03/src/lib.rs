@@ -64,7 +64,6 @@ fn parse_input(input: Vec<&str>) -> Vec<Vec<i8>> {
     grid
 }
 fn part2(input: Vec<&str>) -> i64 {
-
     let grid = parse_input(input);
 
     // Right 1, down 1.
@@ -73,9 +72,9 @@ fn part2(input: Vec<&str>) -> i64 {
     // Right 7, down 1.
     // Right 1, down 2.
 
-    let slopes = vec![(1,1), (3,1), (5,1), (7,1), (1,2)];
+    let slopes = vec![(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
 
-    let mut count:i64 = 1;
+    let mut count: i64 = 1;
     for line in slopes {
         count = count * concuss(&grid, line.0, line.1) as i64
     }
@@ -152,7 +151,6 @@ mod tests {
         ];
         assert_eq!(part2(test_grid), 336);
     }
-
 
     #[test]
     fn day03_part1() {
@@ -483,7 +481,6 @@ mod tests {
         ];
         assert_eq!(part1(grid), 234);
     }
-
 
     #[test]
     fn day03_part2() {
