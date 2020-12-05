@@ -1,0 +1,202 @@
+$ cargo test --package day04 --lib -- tests::day04_part2_real --exact --nocapture > test_day04_part2_real_out.txt
+running 1 test
+OK: Passport { byr: 1986, iyr: 2019, eyr: 2021, hgt: "171cm", hcl: "#6b5442", ecl: "brn", pid: "637485594", cid: None }
+INVALID: Passport { byr: 2004, iyr: 2028, eyr: 2027, hgt: "173cm", hcl: "#bba027", ecl: "brn", pid: "153cm", cid: Some("54") } ; validation_errors: ["invalid byr: 2004"]
+INVALID: Passport { byr: 2015, iyr: 1974, eyr: 2025, hgt: "191cm", hcl: "6962f7", ecl: "oth", pid: "2616015", cid: None } ; validation_errors: ["invalid byr: 2015", "invalid iyr: 1974"]
+INVALID: Passport { byr: 1951, iyr: 2019, eyr: 2027, hgt: "67cm", hcl: "#18171d", ecl: "grn", pid: "268398556", cid: None } ; validation_errors: ["invalid hgt (cm): 67cm"]
+INVALID: Passport { byr: 2013, iyr: 1957, eyr: 2029, hgt: "153cm", hcl: "#623a2f", ecl: "brn", pid: "183179186", cid: None } ; validation_errors: ["invalid byr: 2013", "invalid iyr: 1957"]
+OK: Passport { byr: 1992, iyr: 2016, eyr: 2024, hgt: "184cm", hcl: "#18171d", ecl: "hzl", pid: "751161201", cid: None }
+OK: Passport { byr: 1938, iyr: 2016, eyr: 2021, hgt: "191cm", hcl: "#b6652a", ecl: "blu", pid: "313406514", cid: None }
+OK: Passport { byr: 1991, iyr: 2019, eyr: 2021, hgt: "167cm", hcl: "#623a2f", ecl: "brn", pid: "145249653", cid: None }
+INVALID: Passport { byr: 2021, iyr: 2022, eyr: 2027, hgt: "172in", hcl: "#ceb3a1", ecl: "#f615b1", pid: "175cm", cid: None } ; validation_errors: ["invalid byr: 2021", "invalid iyr: 2022", "invalid hgt (in): 172in", "invalid ecl: #f615b1"]
+INVALID: Passport { byr: 1971, iyr: 2017, eyr: 2023, hgt: "65cm", hcl: "z", ecl: "oth", pid: "521737908", cid: None } ; validation_errors: ["invalid hgt (cm): 65cm"]
+OK: Passport { byr: 1946, iyr: 2012, eyr: 2023, hgt: "160cm", hcl: "#fffffd", ecl: "hzl", pid: "912552538", cid: Some("159") }
+OK: Passport { byr: 1952, iyr: 2015, eyr: 2026, hgt: "72in", hcl: "#18171d", ecl: "amb", pid: "782818257", cid: Some("59") }
+OK: Passport { byr: 1986, iyr: 2018, eyr: 2026, hgt: "173cm", hcl: "#602927", ecl: "amb", pid: "783160698", cid: Some("96") }
+OK: Passport { byr: 1960, iyr: 2011, eyr: 2030, hgt: "171cm", hcl: "#a97842", ecl: "hzl", pid: "912273414", cid: Some("199") }
+OK: Passport { byr: 1942, iyr: 2013, eyr: 2029, hgt: "156cm", hcl: "#ceb3a1", ecl: "amb", pid: "567057004", cid: Some("116") }
+INVALID: Passport { byr: 1956, iyr: 2015, eyr: 2026, hgt: "75in", hcl: "#733820", ecl: "#cddc40", pid: "045090966", cid: Some("254") } ; validation_errors: ["invalid ecl: #cddc40"]
+INVALID: Passport { byr: 2022, iyr: 1959, eyr: 2040, hgt: "176cm", hcl: "b7c0e6", ecl: "#02e67d", pid: "156cm", cid: Some("129") } ; validation_errors: ["invalid byr: 2022", "invalid iyr: 1959", "invalid eyr: 2040", "invalid ecl: #02e67d"]
+OK: Passport { byr: 1933, iyr: 2012, eyr: 2029, hgt: "160cm", hcl: "#888785", ecl: "blu", pid: "028571975", cid: None }
+OK: Passport { byr: 1931, iyr: 2017, eyr: 2030, hgt: "171cm", hcl: "#390f37", ecl: "brn", pid: "015365720", cid: None }
+OK: Passport { byr: 1957, iyr: 2018, eyr: 2021, hgt: "150cm", hcl: "#fffffd", ecl: "gry", pid: "484310015", cid: Some("53") }
+OK: Passport { byr: 1963, iyr: 2011, eyr: 2026, hgt: "156cm", hcl: "#888785", ecl: "brn", pid: "063272603", cid: None }
+OK: Passport { byr: 1955, iyr: 2018, eyr: 2023, hgt: "191cm", hcl: "#888785", ecl: "oth", pid: "310518398", cid: Some("132") }
+OK: Passport { byr: 1938, iyr: 2010, eyr: 2023, hgt: "165cm", hcl: "#623a2f", ecl: "amb", pid: "170304863", cid: Some("290") }
+OK: Passport { byr: 1996, iyr: 2016, eyr: 2026, hgt: "164cm", hcl: "#18171d", ecl: "brn", pid: "021468065", cid: None }
+INVALID: Passport { byr: 2004, iyr: 1997, eyr: 2033, hgt: "184cm", hcl: "99ecb1", ecl: "oth", pid: "871137711", cid: Some("151") } ; validation_errors: ["invalid byr: 2004", "invalid iyr: 1997", "invalid eyr: 2033"]
+INVALID: Passport { byr: 2011, iyr: 2030, eyr: 1925, hgt: "59cm", hcl: "z", ecl: "#eee1d2", pid: "#02ee78", cid: None } ; validation_errors: ["invalid byr: 2011", "invalid eyr: 1925", "invalid hgt (cm): 59cm", "invalid ecl: #eee1d2"]
+OK: Passport { byr: 1995, iyr: 2013, eyr: 2024, hgt: "162cm", hcl: "#888785", ecl: "gry", pid: "742658992", cid: Some("169") }
+OK: Passport { byr: 1946, iyr: 2018, eyr: 2027, hgt: "152cm", hcl: "#238da0", ecl: "amb", pid: "352799678", cid: Some("71") }
+OK: Passport { byr: 1926, iyr: 2013, eyr: 2021, hgt: "172cm", hcl: "#623a2f", ecl: "grn", pid: "723616064", cid: None }
+OK: Passport { byr: 1957, iyr: 2011, eyr: 2027, hgt: "183cm", hcl: "#d67ae1", ecl: "amb", pid: "188153423", cid: None }
+INVALID: Passport { byr: 2016, iyr: 2029, eyr: 1981, hgt: "76cm", hcl: "z", ecl: "#55c2a4", pid: "153cm", cid: None } ; validation_errors: ["invalid byr: 2016", "invalid eyr: 1981", "invalid hgt (cm): 76cm", "invalid ecl: #55c2a4"]
+INVALID: Passport { byr: 2002, iyr: 1960, eyr: 2021, hgt: "184cm", hcl: "#623a2f", ecl: "amb", pid: "414607669", cid: None } ; validation_errors: ["invalid iyr: 1960"]
+OK: Passport { byr: 1950, iyr: 2012, eyr: 2027, hgt: "175cm", hcl: "#a97842", ecl: "grn", pid: "536803427", cid: None }
+OK: Passport { byr: 1930, iyr: 2018, eyr: 2028, hgt: "60in", hcl: "#733820", ecl: "oth", pid: "871909483", cid: None }
+OK: Passport { byr: 1960, iyr: 2020, eyr: 2021, hgt: "155cm", hcl: "#341e13", ecl: "amb", pid: "515710074", cid: None }
+INVALID: Passport { byr: 1922, iyr: 1977, eyr: 2023, hgt: "119", hcl: "z", ecl: "brn", pid: "865700639", cid: None } ; validation_errors: ["invalid iyr: 1977", "invalid hgt (fmt): 119"]
+INVALID: Passport { byr: 2020, iyr: 1972, eyr: 1960, hgt: "166in", hcl: "z", ecl: "#cc987c", pid: "4548657", cid: Some("149") } ; validation_errors: ["invalid byr: 2020", "invalid iyr: 1972", "invalid eyr: 1960", "invalid hgt (in): 166in", "invalid ecl: #cc987c"]
+INVALID: Passport { byr: 1979, iyr: 2015, eyr: 2023, hgt: "187in", hcl: "#b6652a", ecl: "grn", pid: "547953710", cid: None } ; validation_errors: ["invalid hgt (in): 187in"]
+OK: Passport { byr: 1977, iyr: 2018, eyr: 2025, hgt: "187cm", hcl: "#888785", ecl: "oth", pid: "508691429", cid: Some("270") }
+INVALID: Passport { byr: 2020, iyr: 1982, eyr: 2032, hgt: "168cm", hcl: "z", ecl: "gry", pid: "648015564", cid: None } ; validation_errors: ["invalid byr: 2020", "invalid iyr: 1982", "invalid eyr: 2032"]
+OK: Passport { byr: 1992, iyr: 2016, eyr: 2030, hgt: "156cm", hcl: "#fffffd", ecl: "gry", pid: "911858643", cid: None }
+OK: Passport { byr: 1945, iyr: 2015, eyr: 2026, hgt: "164cm", hcl: "#c0946f", ecl: "grn", pid: "241562994", cid: Some("296") }
+OK: Passport { byr: 1976, iyr: 2012, eyr: 2022, hgt: "162cm", hcl: "#b6652a", ecl: "hzl", pid: "269322775", cid: Some("335") }
+INVALID: Passport { byr: 1967, iyr: 2011, eyr: 2028, hgt: "106", hcl: "#a97842", ecl: "grn", pid: "268626219", cid: None } ; validation_errors: ["invalid hgt (fmt): 106"]
+OK: Passport { byr: 1945, iyr: 2016, eyr: 2027, hgt: "193cm", hcl: "#888785", ecl: "oth", pid: "034099334", cid: Some("181") }
+INVALID: Passport { byr: 1987, iyr: 2010, eyr: 2030, hgt: "190cm", hcl: "z", ecl: "utc", pid: "248319556", cid: Some("122") } ; validation_errors: ["invalid ecl: utc"]
+OK: Passport { byr: 1973, iyr: 2012, eyr: 2030, hgt: "167cm", hcl: "#866857", ecl: "hzl", pid: "168618514", cid: Some("143") }
+INVALID: Passport { byr: 2013, iyr: 2016, eyr: 2036, hgt: "71cm", hcl: "c97d76", ecl: "#055b62", pid: "8439355994", cid: Some("116") } ; validation_errors: ["invalid byr: 2013", "invalid eyr: 2036", "invalid hgt (cm): 71cm", "invalid ecl: #055b62"]
+OK: Passport { byr: 1940, iyr: 2011, eyr: 2027, hgt: "192cm", hcl: "#341e13", ecl: "oth", pid: "961548527", cid: None }
+INVALID: Passport { byr: 2024, iyr: 2020, eyr: 1939, hgt: "140", hcl: "#b6652a", ecl: "blu", pid: "889951037", cid: None } ; validation_errors: ["invalid byr: 2024", "invalid iyr: 2020", "invalid eyr: 1939", "invalid hgt (fmt): 140"]
+OK: Passport { byr: 1942, iyr: 2012, eyr: 2027, hgt: "181cm", hcl: "#602927", ecl: "amb", pid: "161703003", cid: None }
+OK: Passport { byr: 1935, iyr: 2015, eyr: 2025, hgt: "180cm", hcl: "#18171d", ecl: "gry", pid: "988699528", cid: Some("204") }
+OK: Passport { byr: 1985, iyr: 2010, eyr: 2025, hgt: "150cm", hcl: "#866857", ecl: "blu", pid: "315179208", cid: Some("192") }
+OK: Passport { byr: 1928, iyr: 2013, eyr: 2021, hgt: "168cm", hcl: "#341e13", ecl: "hzl", pid: "862861470", cid: Some("62") }
+OK: Passport { byr: 1964, iyr: 2018, eyr: 2026, hgt: "185cm", hcl: "#b6652a", ecl: "grn", pid: "099158408", cid: Some("81") }
+OK: Passport { byr: 1990, iyr: 2016, eyr: 2026, hgt: "176cm", hcl: "#d55f68", ecl: "brn", pid: "658930205", cid: Some("242") }
+OK: Passport { byr: 1964, iyr: 2019, eyr: 2024, hgt: "181cm", hcl: "#602927", ecl: "gry", pid: "924899781", cid: Some("163") }
+OK: Passport { byr: 1970, iyr: 2017, eyr: 2026, hgt: "190cm", hcl: "#a97842", ecl: "blu", pid: "8812414708", cid: None }
+OK: Passport { byr: 1957, iyr: 2019, eyr: 2021, hgt: "152cm", hcl: "#ceb3a1", ecl: "oth", pid: "403682313", cid: None }
+INVALID: Passport { byr: 2030, iyr: 2022, eyr: 2035, hgt: "66cm", hcl: "z", ecl: "#c806fe", pid: "23799214", cid: None } ; validation_errors: ["invalid byr: 2030", "invalid iyr: 2022", "invalid eyr: 2035", "invalid hgt (cm): 66cm", "invalid ecl: #c806fe"]
+OK: Passport { byr: 1967, iyr: 2016, eyr: 2022, hgt: "177cm", hcl: "#cfa07d", ecl: "brn", pid: "060293594", cid: Some("194") }
+OK: Passport { byr: 1965, iyr: 2013, eyr: 2029, hgt: "184cm", hcl: "#6b5442", ecl: "oth", pid: "26983291", cid: Some("147") }
+INVALID: Passport { byr: 1975, iyr: 2015, eyr: 2030, hgt: "192cm", hcl: "#623a2f", ecl: "lzr", pid: "255519852", cid: None } ; validation_errors: ["invalid ecl: lzr"]
+OK: Passport { byr: 1935, iyr: 2010, eyr: 2025, hgt: "162cm", hcl: "#881267", ecl: "blu", pid: "121130250", cid: Some("57") }
+OK: Passport { byr: 1982, iyr: 2020, eyr: 2026, hgt: "193cm", hcl: "#623a2f", ecl: "amb", pid: "158154062", cid: Some("87") }
+OK: Passport { byr: 1950, iyr: 2016, eyr: 2025, hgt: "191cm", hcl: "#341e13", ecl: "amb", pid: "137048981", cid: None }
+OK: Passport { byr: 1930, iyr: 2012, eyr: 2029, hgt: "75in", hcl: "#c0946f", ecl: "hzl", pid: "464272185", cid: Some("341") }
+OK: Passport { byr: 1950, iyr: 2016, eyr: 2025, hgt: "185cm", hcl: "#18171d", ecl: "amb", pid: "490377510", cid: Some("237") }
+INVALID: Passport { byr: 1938, iyr: 2014, eyr: 2023, hgt: "156in", hcl: "#7d3b0c", ecl: "blu", pid: "65952131", cid: None } ; validation_errors: ["invalid hgt (in): 156in"]
+INVALID: Passport { byr: 2026, iyr: 2016, eyr: 2034, hgt: "129", hcl: "z", ecl: "oth", pid: "#b85e75", cid: None } ; validation_errors: ["invalid byr: 2026", "invalid iyr: 2016", "invalid eyr: 2034", "invalid hgt (fmt): 129"]
+OK: Passport { byr: 1996, iyr: 2011, eyr: 2027, hgt: "192cm", hcl: "#602927", ecl: "blu", pid: "863613568", cid: None }
+INVALID: Passport { byr: 1952, iyr: 2019, eyr: 2027, hgt: "160cm", hcl: "z", ecl: "#0ae2d6", pid: "719697407", cid: Some("229") } ; validation_errors: ["invalid ecl: #0ae2d6"]
+OK: Passport { byr: 2002, iyr: 2012, eyr: 2023, hgt: "173cm", hcl: "#fffffd", ecl: "hzl", pid: "040987502", cid: Some("155") }
+OK: Passport { byr: 1993, iyr: 2019, eyr: 2027, hgt: "70in", hcl: "#733820", ecl: "oth", pid: "319157251", cid: None }
+OK: Passport { byr: 1989, iyr: 2016, eyr: 2022, hgt: "192cm", hcl: "#9d85d4", ecl: "gry", pid: "570514935", cid: Some("238") }
+OK: Passport { byr: 1922, iyr: 2015, eyr: 2023, hgt: "162cm", hcl: "#623a2f", ecl: "amb", pid: "553794028", cid: Some("201") }
+OK: Passport { byr: 1963, iyr: 2012, eyr: 2024, hgt: "179cm", hcl: "#efcc98", ecl: "amb", pid: "665225721", cid: Some("56") }
+INVALID: Passport { byr: 2026, iyr: 1972, eyr: 1980, hgt: "170cm", hcl: "#888785", ecl: "blu", pid: "153cm", cid: Some("323") } ; validation_errors: ["invalid byr: 2026", "invalid iyr: 1972", "invalid eyr: 1980"]
+OK: Passport { byr: 1920, iyr: 2010, eyr: 2023, hgt: "168cm", hcl: "#3311ec", ecl: "gry", pid: "704204892", cid: None }
+INVALID: Passport { byr: 1990, iyr: 2014, eyr: 2023, hgt: "146", hcl: "z", ecl: "amb", pid: "#7f3caf", cid: Some("270") } ; validation_errors: ["invalid hgt (fmt): 146"]
+OK: Passport { byr: 1950, iyr: 2010, eyr: 2024, hgt: "171cm", hcl: "#602927", ecl: "blu", pid: "383695713", cid: Some("200") }
+OK: Passport { byr: 1935, iyr: 2014, eyr: 2020, hgt: "178cm", hcl: "#2da7db", ecl: "blu", pid: "597509269", cid: None }
+INVALID: Passport { byr: 2006, iyr: 2023, eyr: 2034, hgt: "67cm", hcl: "z", ecl: "#d4719a", pid: "#268d93", cid: None } ; validation_errors: ["invalid byr: 2006", "invalid eyr: 2034", "invalid hgt (cm): 67cm", "invalid ecl: #d4719a"]
+INVALID: Passport { byr: 2011, iyr: 1945, eyr: 1939, hgt: "104", hcl: "#ceb3a1", ecl: "#f9bafb", pid: "9942171839", cid: None } ; validation_errors: ["invalid byr: 2011", "invalid iyr: 1945", "invalid eyr: 1939", "invalid hgt (fmt): 104", "invalid ecl: #f9bafb"]
+OK: Passport { byr: 1937, iyr: 2010, eyr: 2028, hgt: "164cm", hcl: "#ceb3a1", ecl: "gry", pid: "979528684", cid: None }
+OK: Passport { byr: 1996, iyr: 2019, eyr: 2022, hgt: "169cm", hcl: "#18171d", ecl: "gry", pid: "044485658", cid: None }
+OK: Passport { byr: 1921, iyr: 2015, eyr: 2024, hgt: "157cm", hcl: "#7d3b0c", ecl: "oth", pid: "031482456", cid: None }
+INVALID: Passport { byr: 2024, iyr: 2027, eyr: 1983, hgt: "68cm", hcl: "z", ecl: "lzr", pid: "399398768", cid: Some("127") } ; validation_errors: ["invalid byr: 2024", "invalid iyr: 2027", "invalid eyr: 1983", "invalid hgt (cm): 68cm", "invalid ecl: lzr"]
+OK: Passport { byr: 1974, iyr: 2013, eyr: 2024, hgt: "172cm", hcl: "#6b5442", ecl: "amb", pid: "718725983", cid: None }
+OK: Passport { byr: 1999, iyr: 2014, eyr: 2022, hgt: "68in", hcl: "#cfa07d", ecl: "amb", pid: "442275714", cid: Some("216") }
+OK: Passport { byr: 1925, iyr: 2015, eyr: 2029, hgt: "174cm", hcl: "#7d3b0c", ecl: "oth", pid: "888044223", cid: Some("168") }
+INVALID: Passport { byr: 2009, iyr: 2015, eyr: 2021, hgt: "156cm", hcl: "#888785", ecl: "gry", pid: "263500722", cid: None } ; validation_errors: ["invalid byr: 2009"]
+OK: Passport { byr: 1929, iyr: 2016, eyr: 2028, hgt: "169cm", hcl: "#ba8b89", ecl: "hzl", pid: "626102979", cid: Some("103") }
+OK: Passport { byr: 1926, iyr: 2016, eyr: 2023, hgt: "188cm", hcl: "#602927", ecl: "hzl", pid: "678092780", cid: Some("133") }
+INVALID: Passport { byr: 2025, iyr: 1950, eyr: 2037, hgt: "151cm", hcl: "#cfa07d", ecl: "utc", pid: "#584dc1", cid: None } ; validation_errors: ["invalid byr: 2025", "invalid iyr: 1950", "invalid eyr: 2037", "invalid ecl: utc"]
+INVALID: Passport { byr: 1999, iyr: 1955, eyr: 1977, hgt: "140", hcl: "#6b5442", ecl: "oth", pid: "868434068", cid: None } ; validation_errors: ["invalid iyr: 1955", "invalid eyr: 1977", "invalid hgt (fmt): 140"]
+OK: Passport { byr: 1942, iyr: 2016, eyr: 2029, hgt: "166cm", hcl: "#18171d", ecl: "hzl", pid: "100226690", cid: Some("158") }
+OK: Passport { byr: 1930, iyr: 2018, eyr: 2026, hgt: "165cm", hcl: "#623a2f", ecl: "hzl", pid: "868536448", cid: Some("128") }
+OK: Passport { byr: 1950, iyr: 2012, eyr: 2029, hgt: "177cm", hcl: "#efcc98", ecl: "grn", pid: "685629972", cid: Some("326") }
+OK: Passport { byr: 1964, iyr: 2012, eyr: 2025, hgt: "188cm", hcl: "#602927", ecl: "oth", pid: "132604237", cid: Some("78") }
+INVALID: Passport { byr: 1945, iyr: 2023, eyr: 2031, hgt: "70in", hcl: "z", ecl: "#1a590c", pid: "186cm", cid: None } ; validation_errors: ["invalid eyr: 2031", "invalid ecl: #1a590c"]
+OK: Passport { byr: 1945, iyr: 2016, eyr: 2024, hgt: "162cm", hcl: "#18171d", ecl: "amb", pid: "737813370", cid: Some("178") }
+INVALID: Passport { byr: 1949, iyr: 1998, eyr: 2034, hgt: "176cm", hcl: "#18171d", ecl: "amb", pid: "064917719", cid: None } ; validation_errors: ["invalid iyr: 1998", "invalid eyr: 2034"]
+OK: Passport { byr: 1977, iyr: 2010, eyr: 2023, hgt: "72in", hcl: "#623a2f", ecl: "amb", pid: "711343766", cid: Some("177") }
+OK: Passport { byr: 1946, iyr: 2020, eyr: 2020, hgt: "159cm", hcl: "#888785", ecl: "hzl", pid: "153cm", cid: Some("261") }
+INVALID: Passport { byr: 1931, iyr: 2013, eyr: 1950, hgt: "182cm", hcl: "3c49c1", ecl: "#2ced2e", pid: "#19fc55", cid: Some("133") } ; validation_errors: ["invalid eyr: 1950", "invalid ecl: #2ced2e"]
+OK: Passport { byr: 1952, iyr: 2016, eyr: 2029, hgt: "187cm", hcl: "#a9abe6", ecl: "hzl", pid: "691253232", cid: Some("343") }
+INVALID: Passport { byr: 2021, iyr: 1951, eyr: 1964, hgt: "72in", hcl: "z", ecl: "#5995e6", pid: "2103603035", cid: None } ; validation_errors: ["invalid byr: 2021", "invalid iyr: 1951", "invalid eyr: 1964", "invalid ecl: #5995e6"]
+INVALID: Passport { byr: 1988, iyr: 2024, eyr: 1961, hgt: "151in", hcl: "z", ecl: "blu", pid: "5371118784", cid: Some("117") } ; validation_errors: ["invalid eyr: 1961", "invalid hgt (in): 151in"]
+INVALID: Passport { byr: 1987, iyr: 2021, eyr: 2033, hgt: "71cm", hcl: "z", ecl: "amb", pid: "207141921", cid: Some("202") } ; validation_errors: ["invalid eyr: 2033", "invalid hgt (cm): 71cm"]
+OK: Passport { byr: 1927, iyr: 2014, eyr: 2024, hgt: "60in", hcl: "#733820", ecl: "gry", pid: "847799723", cid: Some("285") }
+OK: Passport { byr: 1983, iyr: 2016, eyr: 2025, hgt: "182cm", hcl: "#a97842", ecl: "oth", pid: "647225630", cid: Some("144") }
+OK: Passport { byr: 1961, iyr: 2019, eyr: 2029, hgt: "169cm", hcl: "#efcc98", ecl: "grn", pid: "755541617", cid: Some("57") }
+INVALID: Passport { byr: 1948, iyr: 2029, eyr: 2031, hgt: "76cm", hcl: "z", ecl: "brn", pid: "186cm", cid: None } ; validation_errors: ["invalid eyr: 2031", "invalid hgt (cm): 76cm"]
+OK: Passport { byr: 1991, iyr: 2015, eyr: 2026, hgt: "175cm", hcl: "#ceb3a1", ecl: "blu", pid: "594997236", cid: None }
+OK: Passport { byr: 1989, iyr: 2020, eyr: 2027, hgt: "192cm", hcl: "#cfa07d", ecl: "blu", pid: "657979353", cid: Some("61") }
+INVALID: Passport { byr: 2017, iyr: 2020, eyr: 1999, hgt: "70cm", hcl: "3cf716", ecl: "zzz", pid: "60198759", cid: Some("343") } ; validation_errors: ["invalid byr: 2017", "invalid eyr: 1999", "invalid hgt (cm): 70cm", "invalid ecl: zzz"]
+INVALID: Passport { byr: 2014, iyr: 1941, eyr: 2033, hgt: "182", hcl: "z", ecl: "#9c54e8", pid: "80897411", cid: Some("107") } ; validation_errors: ["invalid byr: 2014", "invalid iyr: 1941", "invalid eyr: 2033", "invalid hgt (fmt): 182", "invalid ecl: #9c54e8"]
+OK: Passport { byr: 1990, iyr: 2015, eyr: 2030, hgt: "168cm", hcl: "#866857", ecl: "oth", pid: "588340506", cid: Some("167") }
+INVALID: Passport { byr: 2012, iyr: 1943, eyr: 1930, hgt: "151", hcl: "676aad", ecl: "oth", pid: "513365039", cid: Some("192") } ; validation_errors: ["invalid byr: 2012", "invalid iyr: 1943", "invalid eyr: 1930", "invalid hgt (fmt): 151"]
+INVALID: Passport { byr: 2014, iyr: 2022, eyr: 2024, hgt: "70cm", hcl: "4909ee", ecl: "#921980", pid: "#13fe6c", cid: Some("119") } ; validation_errors: ["invalid byr: 2014", "invalid hgt (cm): 70cm", "invalid ecl: #921980"]
+INVALID: Passport { byr: 2025, iyr: 1946, eyr: 2036, hgt: "155cm", hcl: "02fdbc", ecl: "utc", pid: "508011940", cid: None } ; validation_errors: ["invalid byr: 2025", "invalid iyr: 1946", "invalid eyr: 2036", "invalid ecl: utc"]
+INVALID: Passport { byr: 1951, iyr: 2010, eyr: 2028, hgt: "171cm", hcl: "#c0946f", ecl: "#9077c0", pid: "#f74bbe", cid: None } ; validation_errors: ["invalid ecl: #9077c0"]
+INVALID: Passport { byr: 2020, iyr: 2017, eyr: 2028, hgt: "125", hcl: "#cfa07d", ecl: "brn", pid: "731062033", cid: Some("255") } ; validation_errors: ["invalid byr: 2020", "invalid hgt (fmt): 125"]
+INVALID: Passport { byr: 1978, iyr: 2012, eyr: 2033, hgt: "70cm", hcl: "z", ecl: "xry", pid: "272848084", cid: None } ; validation_errors: ["invalid eyr: 2033", "invalid hgt (cm): 70cm", "invalid ecl: xry"]
+OK: Passport { byr: 1999, iyr: 2015, eyr: 2030, hgt: "174cm", hcl: "#ceb3a1", ecl: "blu", pid: "322583115", cid: Some("301") }
+INVALID: Passport { byr: 2007, iyr: 2013, eyr: 2007, hgt: "156in", hcl: "680e8c", ecl: "dne", pid: "182cm", cid: Some("322") } ; validation_errors: ["invalid byr: 2007", "invalid eyr: 2007", "invalid hgt (in): 156in", "invalid ecl: dne"]
+OK: Passport { byr: 1996, iyr: 2020, eyr: 2022, hgt: "189cm", hcl: "#18171d", ecl: "amb", pid: "470853813", cid: None }
+OK: Passport { byr: 1936, iyr: 2012, eyr: 2023, hgt: "183cm", hcl: "#7d3b0c", ecl: "gry", pid: "376279728", cid: None }
+OK: Passport { byr: 2000, iyr: 2020, eyr: 2023, hgt: "157cm", hcl: "#866857", ecl: "hzl", pid: "203994583", cid: None }
+INVALID: Passport { byr: 2009, iyr: 2029, eyr: 1992, hgt: "70cm", hcl: "dc80b3", ecl: "grn", pid: "#65c31d", cid: None } ; validation_errors: ["invalid byr: 2009", "invalid eyr: 1992", "invalid hgt (cm): 70cm"]
+OK: Passport { byr: 1945, iyr: 2013, eyr: 2028, hgt: "177cm", hcl: "#7d3b0c", ecl: "blu", pid: "038116668", cid: Some("74") }
+INVALID: Passport { byr: 1986, iyr: 2013, eyr: 1970, hgt: "76cm", hcl: "#888785", ecl: "zzz", pid: "700997508", cid: Some("219") } ; validation_errors: ["invalid eyr: 1970", "invalid hgt (cm): 76cm", "invalid ecl: zzz"]
+OK: Passport { byr: 1988, iyr: 2015, eyr: 2025, hgt: "161cm", hcl: "#fffffd", ecl: "gry", pid: "840085402", cid: Some("188") }
+OK: Passport { byr: 1947, iyr: 2011, eyr: 2029, hgt: "157cm", hcl: "#b6652a", ecl: "brn", pid: "910022061", cid: Some("273") }
+OK: Passport { byr: 1930, iyr: 2013, eyr: 2026, hgt: "187cm", hcl: "#b6652a", ecl: "grn", pid: "010289131", cid: Some("220") }
+INVALID: Passport { byr: 2025, iyr: 1930, eyr: 1933, hgt: "120", hcl: "#6b5442", ecl: "grt", pid: "454504291", cid: None } ; validation_errors: ["invalid byr: 2025", "invalid iyr: 1930", "invalid eyr: 1933", "invalid hgt (fmt): 120", "invalid ecl: grt"]
+OK: Passport { byr: 1953, iyr: 2016, eyr: 2028, hgt: "180cm", hcl: "#18171d", ecl: "amb", pid: "334803890", cid: Some("237") }
+OK: Passport { byr: 1933, iyr: 2020, eyr: 2020, hgt: "185cm", hcl: "#c0946f", ecl: "brn", pid: "050791974", cid: None }
+OK: Passport { byr: 1933, iyr: 2019, eyr: 2030, hgt: "186cm", hcl: "#866857", ecl: "brn", pid: "643899463", cid: None }
+OK: Passport { byr: 1935, iyr: 2018, eyr: 2029, hgt: "169cm", hcl: "#6b5442", ecl: "oth", pid: "732801213", cid: None }
+INVALID: Passport { byr: 1996, iyr: 2014, eyr: 2020, hgt: "193cm", hcl: "z", ecl: "#4102ee", pid: "890541531", cid: None } ; validation_errors: ["invalid ecl: #4102ee"]
+OK: Passport { byr: 1991, iyr: 2019, eyr: 2025, hgt: "154cm", hcl: "#18171d", ecl: "gry", pid: "618379341", cid: None }
+INVALID: Passport { byr: 1974, iyr: 2013, eyr: 2040, hgt: "192cm", hcl: "#18171d", ecl: "grn", pid: "912066964", cid: None } ; validation_errors: ["invalid eyr: 2040"]
+INVALID: Passport { byr: 2021, iyr: 2011, eyr: 2035, hgt: "189cm", hcl: "z", ecl: "gmt", pid: "278839955", cid: None } ; validation_errors: ["invalid byr: 2021", "invalid iyr: 2011", "invalid eyr: 2035", "invalid ecl: gmt"]
+OK: Passport { byr: 2002, iyr: 2011, eyr: 2030, hgt: "192cm", hcl: "#efcc98", ecl: "blu", pid: "536958012", cid: None }
+OK: Passport { byr: 1976, iyr: 2019, eyr: 2024, hgt: "158cm", hcl: "#790688", ecl: "grn", pid: "#1306f2", cid: None }
+OK: Passport { byr: 1934, iyr: 2016, eyr: 2021, hgt: "190cm", hcl: "#18171d", ecl: "amb", pid: "366021385", cid: Some("143") }
+INVALID: Passport { byr: 2020, iyr: 2014, eyr: 2022, hgt: "169cm", hcl: "#602927", ecl: "#dd96f4", pid: "177cm", cid: None } ; validation_errors: ["invalid byr: 2020", "invalid ecl: #dd96f4"]
+OK: Passport { byr: 1966, iyr: 2020, eyr: 2020, hgt: "173cm", hcl: "#c0946f", ecl: "oth", pid: "591592395", cid: None }
+OK: Passport { byr: 1999, iyr: 2016, eyr: 2020, hgt: "62in", hcl: "#c0946f", ecl: "brn", pid: "306204399", cid: None }
+OK: Passport { byr: 1971, iyr: 2010, eyr: 2024, hgt: "187cm", hcl: "#733820", ecl: "brn", pid: "477011496", cid: Some("165") }
+INVALID: Passport { byr: 2017, iyr: 1925, eyr: 2021, hgt: "71cm", hcl: "z", ecl: "utc", pid: "5469028726", cid: None } ; validation_errors: ["invalid byr: 2017", "invalid iyr: 1925", "invalid hgt (cm): 71cm", "invalid ecl: utc"]
+OK: Passport { byr: 1960, iyr: 2014, eyr: 2023, hgt: "168cm", hcl: "#b6652a", ecl: "grn", pid: "653140418", cid: None }
+INVALID: Passport { byr: 2003, iyr: 1956, eyr: 2020, hgt: "189cm", hcl: "z", ecl: "gry", pid: "#afa892", cid: Some("190") } ; validation_errors: ["invalid byr: 2003", "invalid iyr: 1956"]
+INVALID: Passport { byr: 2016, iyr: 2010, eyr: 1947, hgt: "175cm", hcl: "e4cddf", ecl: "#fa945d", pid: "189cm", cid: Some("185") } ; validation_errors: ["invalid byr: 2016", "invalid eyr: 1947", "invalid ecl: #fa945d"]
+INVALID: Passport { byr: 2019, iyr: 2029, eyr: 2039, hgt: "185cm", hcl: "7752f8", ecl: "hzl", pid: "636534364", cid: Some("176") } ; validation_errors: ["invalid byr: 2019", "invalid eyr: 2039"]
+INVALID: Passport { byr: 2021, iyr: 2013, eyr: 1993, hgt: "71cm", hcl: "ef5177", ecl: "gmt", pid: "2136295", cid: Some("170") } ; validation_errors: ["invalid byr: 2021", "invalid iyr: 2013", "invalid eyr: 1993", "invalid hgt (cm): 71cm", "invalid ecl: gmt"]
+OK: Passport { byr: 1964, iyr: 2018, eyr: 2030, hgt: "73in", hcl: "#fffffd", ecl: "amb", pid: "801432704", cid: Some("298") }
+OK: Passport { byr: 1929, iyr: 2019, eyr: 2025, hgt: "184cm", hcl: "#ceb3a1", ecl: "blu", pid: "369160624", cid: Some("272") }
+OK: Passport { byr: 1998, iyr: 2017, eyr: 2027, hgt: "168cm", hcl: "#7d3b0c", ecl: "gry", pid: "525287934", cid: None }
+INVALID: Passport { byr: 1975, iyr: 2017, eyr: 2027, hgt: "172cm", hcl: "4e319d", ecl: "brn", pid: "308046532", cid: Some("125") } ; validation_errors: []
+INVALID: Passport { byr: 2019, iyr: 1968, eyr: 2003, hgt: "180in", hcl: "b889c0", ecl: "gmt", pid: "6699675552", cid: None } ; validation_errors: ["invalid byr: 2019", "invalid iyr: 1968", "invalid eyr: 2003", "invalid hgt (in): 180in", "invalid ecl: gmt"]
+INVALID: Passport { byr: 2025, iyr: 2002, eyr: 1951, hgt: "162in", hcl: "z", ecl: "zzz", pid: "#87dca4", cid: None } ; validation_errors: ["invalid byr: 2025", "invalid iyr: 2002", "invalid eyr: 1951", "invalid hgt (in): 162in", "invalid ecl: zzz"]
+INVALID: Passport { byr: 2029, iyr: 2026, eyr: 2022, hgt: "153cm", hcl: "2993de", ecl: "hzl", pid: "549517742", cid: None } ; validation_errors: ["invalid byr: 2029", "invalid iyr: 2026"]
+OK: Passport { byr: 1966, iyr: 2018, eyr: 2024, hgt: "188cm", hcl: "#c0946f", ecl: "gry", pid: "755674604", cid: None }
+INVALID: Passport { byr: 1939, iyr: 1932, eyr: 1982, hgt: "74cm", hcl: "#6b5442", ecl: "#0dc7f6", pid: "451038742", cid: None } ; validation_errors: ["invalid iyr: 1932", "invalid eyr: 1982", "invalid hgt (cm): 74cm", "invalid ecl: #0dc7f6"]
+OK: Passport { byr: 1980, iyr: 2019, eyr: 2028, hgt: "167cm", hcl: "#18171d", ecl: "gry", pid: "326267989", cid: None }
+OK: Passport { byr: 1949, iyr: 2013, eyr: 2025, hgt: "177cm", hcl: "#a97842", ecl: "hzl", pid: "292166795", cid: Some("226") }
+OK: Passport { byr: 1969, iyr: 2013, eyr: 2022, hgt: "193cm", hcl: "#18171d", ecl: "oth", pid: "962521763", cid: Some("71") }
+INVALID: Passport { byr: 1940, iyr: 2028, eyr: 2024, hgt: "189cm", hcl: "z", ecl: "grn", pid: "032392876", cid: None } ; validation_errors: []
+OK: Passport { byr: 1959, iyr: 2012, eyr: 2028, hgt: "191cm", hcl: "#b6652a", ecl: "oth", pid: "392810631", cid: Some("339") }
+OK: Passport { byr: 1975, iyr: 2011, eyr: 2027, hgt: "176cm", hcl: "#18171d", ecl: "gry", pid: "290432747", cid: None }
+INVALID: Passport { byr: 1946, iyr: 2011, eyr: 2027, hgt: "185cm", hcl: "z", ecl: "brn", pid: "210871734", cid: Some("180") } ; validation_errors: []
+INVALID: Passport { byr: 1926, iyr: 2021, eyr: 2022, hgt: "183in", hcl: "#7d3b0c", ecl: "#a05063", pid: "3292990618", cid: None } ; validation_errors: ["invalid hgt (in): 183in", "invalid ecl: #a05063"]
+INVALID: Passport { byr: 2027, iyr: 1942, eyr: 1960, hgt: "60cm", hcl: "9fae56", ecl: "#a8b66c", pid: "#3b6f3f", cid: None } ; validation_errors: ["invalid byr: 2027", "invalid iyr: 1942", "invalid eyr: 1960", "invalid hgt (cm): 60cm", "invalid ecl: #a8b66c"]
+OK: Passport { byr: 1935, iyr: 2014, eyr: 2020, hgt: "183cm", hcl: "#c0946f", ecl: "oth", pid: "816986054", cid: None }
+OK: Passport { byr: 2001, iyr: 2020, eyr: 2027, hgt: "173cm", hcl: "#c0946f", ecl: "grn", pid: "032040868", cid: Some("85") }
+INVALID: Passport { byr: 2009, iyr: 1939, eyr: 2031, hgt: "67cm", hcl: "#6b5442", ecl: "grt", pid: "9365125584", cid: Some("308") } ; validation_errors: ["invalid byr: 2009", "invalid iyr: 1939", "invalid eyr: 2031", "invalid hgt (cm): 67cm", "invalid ecl: grt"]
+INVALID: Passport { byr: 1936, iyr: 2029, eyr: 2030, hgt: "154cm", hcl: "491c70", ecl: "blu", pid: "391887956", cid: None } ; validation_errors: []
+INVALID: Passport { byr: 2024, iyr: 2024, eyr: 2035, hgt: "154", hcl: "z", ecl: "dne", pid: "8054447805", cid: None } ; validation_errors: ["invalid byr: 2024", "invalid iyr: 2024", "invalid eyr: 2035", "invalid hgt (fmt): 154", "invalid ecl: dne"]
+OK: Passport { byr: 1940, iyr: 2030, eyr: 2020, hgt: "178cm", hcl: "#c0946f", ecl: "hzl", pid: "788531859", cid: None }
+OK: Passport { byr: 1976, iyr: 2012, eyr: 2025, hgt: "163cm", hcl: "#888785", ecl: "grn", pid: "554364568", cid: Some("253") }
+OK: Passport { byr: 1933, iyr: 2015, eyr: 2029, hgt: "68in", hcl: "#efcc98", ecl: "gry", pid: "273847553", cid: Some("274") }
+OK: Passport { byr: 1969, iyr: 2020, eyr: 2024, hgt: "165cm", hcl: "#733820", ecl: "grn", pid: "209462386", cid: None }
+OK: Passport { byr: 1975, iyr: 2018, eyr: 2027, hgt: "187cm", hcl: "#c0946f", ecl: "hzl", pid: "141969110", cid: None }
+INVALID: Passport { byr: 2025, iyr: 2022, eyr: 2036, hgt: "164in", hcl: "z", ecl: "grt", pid: "534439483", cid: Some("324") } ; validation_errors: ["invalid byr: 2025", "invalid iyr: 2022", "invalid eyr: 2036", "invalid hgt (in): 164in", "invalid ecl: grt"]
+OK: Passport { byr: 1997, iyr: 2014, eyr: 2030, hgt: "63in", hcl: "#866857", ecl: "gry", pid: "371522079", cid: None }
+OK: Passport { byr: 1955, iyr: 2013, eyr: 2026, hgt: "190cm", hcl: "#888785", ecl: "amb", pid: "311393763", cid: Some("265") }
+OK: Passport { byr: 1947, iyr: 2019, eyr: 2026, hgt: "71in", hcl: "#733820", ecl: "gry", pid: "721355771", cid: None }
+OK: Passport { byr: 1938, iyr: 2012, eyr: 2024, hgt: "177cm", hcl: "#7d3b0c", ecl: "hzl", pid: "336868233", cid: Some("94") }
+OK: Passport { byr: 1960, iyr: 2010, eyr: 2027, hgt: "169cm", hcl: "#cfa07d", ecl: "brn", pid: "379769214", cid: Some("111") }
+INVALID: Passport { byr: 2025, iyr: 2018, eyr: 2036, hgt: "179cm", hcl: "3f59a6", ecl: "oth", pid: "217404607", cid: None } ; validation_errors: ["invalid byr: 2025", "invalid iyr: 2018", "invalid eyr: 2036"]
+OK: Passport { byr: 1967, iyr: 2012, eyr: 2025, hgt: "170cm", hcl: "#efcc98", ecl: "amb", pid: "820370865", cid: Some("309") }
+INVALID: Passport { byr: 2000, iyr: 2029, eyr: 2024, hgt: "193cm", hcl: "a3046e", ecl: "lzr", pid: "626863952", cid: Some("233") } ; validation_errors: ["invalid ecl: lzr"]
+INVALID: Passport { byr: 1931, iyr: 2013, eyr: 1928, hgt: "182cm", hcl: "#866857", ecl: "amb", pid: "557376401", cid: Some("244") } ; validation_errors: ["invalid eyr: 1928"]
+test tests::day04_part2_real ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out
+

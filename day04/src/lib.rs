@@ -87,19 +87,20 @@ impl Passport {
     }
     fn valid(&self) -> bool {
         let mut valid = true;
+        let mut validation_errors: Vec<String>  = vec![];
         // byr (Birth Year) - four digits; at least 1920 and at most 2002.
         if self.byr < 1920 || self.byr > 2002 {
-            println!("invalid byr: {}", self.byr);
+            validation_errors.push(format!("invalid byr: {}", self.byr));
             valid = false;
         }
         // iyr (Issue Year) - four digits; at least 2010 and at most 2020.
         if self.iyr < 2010 || self.byr > 2020 {
-            println!("invalid iyr: {}", self.iyr);
+            validation_errors.push(format!("invalid iyr: {}", self.iyr));
             valid = false;
         }
         // eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
         if self.eyr < 2020 || self.eyr > 2030 {
-            println!("invalid eyr: {}", self.eyr);
+            validation_errors.push(format!("invalid eyr: {}", self.eyr));
             valid = false;
         }
         // hgt (Height) - a number followed by either cm or in:
@@ -108,17 +109,17 @@ impl Passport {
         if self.hgt.ends_with("cm") {
             let height = &self.hgt.replace("cm", "").parse::<i16>().unwrap_or(-1);
             if height < &150 || height > &193 {
-                println!("invalid hgt (cm): {}", self.hgt);
+                validation_errors.push(format!("invalid hgt (cm): {}", self.hgt));
                 valid = false;
             }
         } else if self.hgt.ends_with("in") {
             let height = &self.hgt.replace("in", "").parse::<i16>().unwrap_or(-1);
             if height < &59 || height > &76 {
-                println!("invalid hgt (in): {}", self.hgt);
+                validation_errors.push(format!("invalid hgt (in): {}", self.hgt));
                 valid = false;
             }
         } else {
-            println!("invalid hgt (fmt): {}", self.hgt);
+            validation_errors.push(format!("invalid hgt (fmt): {}", self.hgt));
             valid = false;
         }
         // TODO
@@ -126,11 +127,11 @@ impl Passport {
         if self.hcl.len() == 7 {
             let color = i64::from_str_radix(&self.hcl.replace("#", ""), 16).unwrap_or(-1);
             if color == -1 {
-                println!("invalid hcl (value): {}", self.hcl);
+                validation_errors.push(format!("invalid hcl (value): {}", self.hcl));
                 valid = false;
             }
         } else {
-            println!("invalid hcl (str len): {}", self.hcl);
+            format!("invalid hcl (str len): {}", self.hcl);
             valid = false;
         }
         // TODO
@@ -147,13 +148,18 @@ impl Passport {
         .into_iter()
         .collect();
         if !valid_colors.contains(&self.ecl) {
-            println!("invalid ecl: {}", self.ecl);
+            validation_errors.push(format!("invalid ecl: {}", self.ecl));
             valid = false;
         }
         // pid (Passport ID) - a nine-digit number, including leading zeroes.
         if !self.pid.len() == 9 && self.pid.parse::<i16>().unwrap_or(-1) != -1 {
-            println!("invalid pid: {}", self.pid);
+            validation_errors.push(format!("invalid pid: {}", self.pid));
             valid = false;
+        }
+        if ! valid {
+            println!("INVALID: {:?} ; validation_errors: {:?}", self, validation_errors);
+        } else {
+            println!("OK: {:?}", self);
         }
         // cid (Country ID) - ignored, missing or not.
         valid
