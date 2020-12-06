@@ -87,7 +87,7 @@ impl Passport {
     }
     fn valid(&self) -> bool {
         let mut valid = true;
-        let mut validation_errors: Vec<String>  = vec![];
+        let mut validation_errors: Vec<String> = vec![];
         // byr (Birth Year) - four digits; at least 1920 and at most 2002.
         if self.byr < 1920 || self.byr > 2002 {
             validation_errors.push(format!("invalid byr: {}", self.byr));
