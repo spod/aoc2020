@@ -94,7 +94,7 @@ impl Passport {
             valid = false;
         }
         // iyr (Issue Year) - four digits; at least 2010 and at most 2020.
-        if self.iyr < 2010 || self.byr > 2020 {
+        if self.iyr < 2010 || self.iyr > 2020 {
             validation_errors.push(format!("invalid iyr: {}", self.iyr));
             valid = false;
         }
@@ -122,7 +122,6 @@ impl Passport {
             validation_errors.push(format!("invalid hgt (fmt): {}", self.hgt));
             valid = false;
         }
-        // TODO
         // hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
         if self.hcl.len() == 7 {
             let color = i64::from_str_radix(&self.hcl.replace("#", ""), 16).unwrap_or(-1);
@@ -134,7 +133,6 @@ impl Passport {
             format!("invalid hcl (str len): {}", self.hcl);
             valid = false;
         }
-        // TODO
         // ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
         let valid_colors: HashSet<String> = vec![
             String::from("amb"),
@@ -152,8 +150,12 @@ impl Passport {
             valid = false;
         }
         // pid (Passport ID) - a nine-digit number, including leading zeroes.
-        if !self.pid.len() == 9 && self.pid.parse::<i16>().unwrap_or(-1) != -1 {
-            validation_errors.push(format!("invalid pid: {}", self.pid));
+        if self.pid.len() != 9 {
+            validation_errors.push(format!("invalid length pid: {}", self.pid));
+            valid = false;
+        }
+        if self.pid.parse::<i16>().unwrap_or(-1) != -1 {
+            validation_errors.push(format!("non numeric pid: {}", self.pid));
             valid = false;
         }
         if ! valid {
@@ -162,6 +164,7 @@ impl Passport {
             println!("OK: {:?}", self);
         }
         // cid (Country ID) - ignored, missing or not.
+        // NOP
         valid
     }
 }
@@ -221,6 +224,7 @@ fn part2(batch: Vec<&str>) -> i32 {
             Err(_) => (),
         }
     }
+    println!("count: {}", count);
     count
 }
 
@@ -2297,7 +2301,7 @@ mod tests {
             "eyr:1928 pid:557376401 hgt:182cm iyr:2013",
             "",
         ];
-        assert_eq!(part2(input), 119);
+        assert_eq!(part2(input), 114);
     }
 
     #[test]
