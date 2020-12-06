@@ -62,7 +62,43 @@ fn part1(input: Vec<String>) -> i32 {
 }
 
 fn part2(input: Vec<String>) -> i32 {
-    6
+    let mut buf: Vec<String> = vec![];
+    let mut count: i32 = 0;
+    for line in input {
+        if line == "" {
+            // new group
+            let mut group_counts = HashMap::new();
+            // count number of people in the group
+            let mut gc = 0;
+            for line in &buf {
+                for c in line.chars() {
+                    let cnt = group_counts.entry(c).or_insert(0);
+                    *cnt += 1;
+                }
+                gc += 1;
+            }
+            // count questions which everyone in the group answered
+            count += group_counts.values().filter(|v| v == &&gc).count() as i32;
+
+            buf = vec![];
+        } else {
+            buf.push(line);
+        }
+    }
+    // deal with last record
+    if buf.len() > 0 {
+        let mut group_counts = HashMap::new();
+        let mut gc = 0;
+        for line in &buf {
+            for c in line.chars() {
+                let cnt = group_counts.entry(c).or_insert(0);
+                *cnt += 1;
+            }
+            gc += 1;
+        }
+        count += group_counts.values().filter(|v| v == &&gc).count() as i32;
+    }
+    count
 }
 
 #[cfg(test)]
@@ -116,5 +152,11 @@ mod tests {
             String::from("b"),
         ];
         assert_eq!(part2(input), 6);
+    }
+
+    #[test]
+    fn day06_part2_real() {
+        let input = load_input();
+        assert_eq!(part2(input), 3193);
     }
 }
