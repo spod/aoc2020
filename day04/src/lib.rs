@@ -158,11 +158,6 @@ impl Passport {
             validation_errors.push(format!("non numeric pid: {}", self.pid));
             valid = false;
         }
-        if ! valid {
-            println!("INVALID: {:?} ; validation_errors: {:?}", self, validation_errors);
-        } else {
-            println!("OK: {:?}", self);
-        }
         // cid (Country ID) - ignored, missing or not.
         // NOP
         valid
