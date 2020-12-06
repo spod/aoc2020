@@ -4,9 +4,9 @@ use std::fs;
 use std::io::BufRead;
 use std::iter::FromIterator;
 
-pub struct Day04 {}
+pub struct Day05 {}
 
-impl Problem for Day04 {
+impl Problem for Day05 {
     fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
         todo!()
     }
