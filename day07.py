@@ -74,6 +74,31 @@ def part1(input):
     print("part1 count: {}", count)
     return count
 
+def count(bag_rules, target, sourceCount, total):
+    print("target: {}, rules: {}, sourceCount: {}, total: {}".format(target, bag_rules[target], sourceCount, total))
+    for child in bag_rules[target].contains:
+        total.append(child.qty * sourceCount)
+        count(bag_rules, child.bag, child.qty * sourceCount, total)
+
+
+def part2(input):
+    TARGET = "shiny gold bag"
+    rules = [parse_rule(rule) for rule in input]
+    bag_graph = defaultdict(set)
+    bag_rules = defaultdict(Rule)
+    for r in rules:
+        bag_rules[r.bag] = r
+        for c in r.contains:
+            bag_graph[r.bag].add(c.bag)
+        if len(r.contains) == 0:
+            bag_graph[r.bag] = set()
+
+    total = list()
+    count(bag_rules, TARGET, 1, total)
+
+    print("total: {}; {}".format(sum(total), total))
+    return sum(total)
+
 def test_part1_sample():
     input = list( (l.strip() for l in open('./inputs/day07_sample').readlines()) )
     assert part1(input) == 4, "Invalid result - expected 4!"
@@ -82,7 +107,18 @@ def test_part1_real():
     input = list( (l.strip() for l in open('./inputs/day07').readlines()) )
     assert part1(input) == 205, "Invalid result!"
 
+def test_part2_sample():
+    input = list( (l.strip() for l in open('./inputs/day07_sample').readlines()) )
+    assert part2(input) == 32, "Invalid result!"
+
+def test_part2_sample2():
+    input = list( (l.strip() for l in open('./inputs/day07_sample2').readlines()) )
+    assert part2(input) == 126, "Invalid result!"
+
 #test_parse_rule()
 #test_part1_sample()
-test_part1_real()
+#test_part1_real()
+test_part2_sample()
+test_part2_sample2()
+
 print("Ok!")
