@@ -90,14 +90,9 @@ def count(bag_rules, target, sourceCount, total):
 def part2(input):
     TARGET = "shiny gold bag"
     rules = [parse_rule(rule) for rule in input]
-    bag_graph = defaultdict(set)
     bag_rules = defaultdict(Rule)
     for r in rules:
         bag_rules[r.bag] = r
-        for c in r.contains:
-            bag_graph[r.bag].add(c.bag)
-        if len(r.contains) == 0:
-            bag_graph[r.bag] = set()
 
     total = list()
     count(bag_rules, TARGET, 1, total)
