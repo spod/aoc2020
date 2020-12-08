@@ -26,6 +26,8 @@ fn load_input(sample: bool) -> Vec<String> {
     let result = inlines.lines().map(|s| String::from(s)).collect();
     result
 }
+
+#[derive(Debug, PartialEq)]
 struct CPUState {
     acc: i32,
     pc: isize,
@@ -44,6 +46,12 @@ struct Instruction {
     arg: i32,
 }
 
+#[derive(Debug, PartialEq)]
+struct ExecutionResult {
+    terminated: bool,
+    state: CPUState,
+}
+
 fn parse_instruction(instr: String) -> Instruction {
     let parts: Vec<&str> = instr.split(' ').collect();
     let op = match parts[0] {
@@ -56,47 +64,52 @@ fn parse_instruction(instr: String) -> Instruction {
     Instruction { op: op, arg: arg }
 }
 
-fn part1(input: Vec<String>) -> i32 {
+// TODO - if this is re-used in later days wrap in Result<...> etc
+fn run(mem: Vec<Instruction>) -> ExecutionResult {
     let mut state = CPUState { acc: 0, pc: 0 };
-
-    let mem: Vec<Instruction> = input.into_iter().map(|i| parse_instruction(i)).collect();
     let mut seen: Vec<bool> = vec![];
+    let mut terminated: bool = true;
     for _ in 0..=mem.len() {
         seen.push(false);
     }
-    //    println!("mem: {:?}", mem);
 
-    let mut c = 0;
     loop {
-        c += 1;
-        if c > 9000 {
-            break;
-        }
         let i = &mem[state.pc as usize];
         if !seen[state.pc as usize] {
             seen[state.pc as usize] = true
         } else {
-            println!("Already accessed - exiting!");
+            // exit loop once we have "seen" every instruction in mem
+            terminated = false;
             break;
         }
         match i.op {
             Ops::ACC => {
-                println!("Accumulate: {}", i.arg);
                 state.acc += i.arg;
                 state.pc += 1;
             }
             Ops::JMP => {
-                println!("Jump: {}", i.arg);
                 state.pc += i.arg as isize;
             }
             Ops::NOP => {
-                println!("NOP: {}", i.arg);
                 state.pc += 1;
             }
         };
     }
-    println!("state.acc: {}", state.acc);
-    state.acc
+    ExecutionResult {
+        terminated,
+        state: state,
+    }
+}
+
+fn part1(input: Vec<String>) -> i32 {
+    let mut state = CPUState { acc: 0, pc: 0 };
+
+    let mem: Vec<Instruction> = input.into_iter().map(|i| parse_instruction(i)).collect();
+
+    let res = run(mem);
+
+    println!("state.acc: {}", res.state.acc);
+    res.state.acc
 }
 
 #[cfg(test)]
@@ -143,6 +156,6 @@ mod tests {
     #[test]
     fn day07_part1_real() {
         let input = load_input(false);
-        assert_eq!(part1(input), 4);
+        assert_eq!(part1(input), 1528);
     }
 }
