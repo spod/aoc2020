@@ -45,7 +45,7 @@ struct Instruction {
 }
 
 fn parse_instruction(instr: String) -> Instruction {
-    let mut parts: Vec<&str> = instr.split(' ').collect();
+    let parts: Vec<&str> = instr.split(' ').collect();
     let op = match parts[0] {
         "acc" => Ops::ACC,
         "jmp" => Ops::JMP,
@@ -60,6 +60,10 @@ fn part1(input: Vec<String>) -> i32 {
     let mut state = CPUState { acc: 0, pc: 0 };
 
     let mem: Vec<Instruction> = input.into_iter().map(|i| parse_instruction(i)).collect();
+    let mut seen: Vec<bool> = vec![];
+    for _ in 0..=mem.len() {
+        seen.push(false);
+    }
     //    println!("mem: {:?}", mem);
 
     let mut c = 0;
@@ -69,6 +73,12 @@ fn part1(input: Vec<String>) -> i32 {
             break;
         }
         let i = &mem[state.pc as usize];
+        if !seen[state.pc as usize] {
+            seen[state.pc as usize] = true
+        } else {
+            println!("Already accessed - exiting!");
+            break;
+        }
         match i.op {
             Ops::ACC => {
                 println!("Accumulate: {}", i.arg);
@@ -85,7 +95,8 @@ fn part1(input: Vec<String>) -> i32 {
             }
         };
     }
-    5
+    println!("state.acc: {}", state.acc);
+    state.acc
 }
 
 #[cfg(test)]
@@ -129,9 +140,9 @@ mod tests {
         }
     }
 
-    // #[test]
-    // fn day07_part1_real() {
-    //     let input = load_input(false);
-    //     assert_eq!(part1(input), 4);
-    // }
+    #[test]
+    fn day07_part1_real() {
+        let input = load_input(false);
+        assert_eq!(part1(input), 4);
+    }
 }
