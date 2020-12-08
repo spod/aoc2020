@@ -68,20 +68,28 @@ fn parse_instruction(instr: String) -> Instruction {
 fn run(mem: Vec<Instruction>) -> ExecutionResult {
     let mut state = CPUState { acc: 0, pc: 0 };
     let mut seen: Vec<bool> = vec![];
-    let mut terminated: bool = true;
+    let terminated: bool;
     for _ in 0..=mem.len() {
         seen.push(false);
     }
 
     loop {
-        let i = &mem[state.pc as usize];
+        // check if we should exit execution loop
+        // 1. execution terminates if pc goes past end of memory
+        if state.pc as usize > mem.len() -1 {
+            terminated = true;
+            break;
+        }
+        // 2. track mem accesses and assume infinite loop if we have accessed any instruction previously
         if !seen[state.pc as usize] {
             seen[state.pc as usize] = true
         } else {
-            // exit loop once we have "seen" every instruction in mem
             terminated = false;
             break;
         }
+
+        // fetch instruction to execute and execute it
+        let i = &mem[state.pc as usize];
         match i.op {
             Ops::ACC => {
                 state.acc += i.arg;
@@ -96,14 +104,12 @@ fn run(mem: Vec<Instruction>) -> ExecutionResult {
         };
     }
     ExecutionResult {
-        terminated,
+        terminated: terminated,
         state: state,
     }
 }
 
 fn part1(input: Vec<String>) -> i32 {
-    let mut state = CPUState { acc: 0, pc: 0 };
-
     let mem: Vec<Instruction> = input.into_iter().map(|i| parse_instruction(i)).collect();
 
     let res = run(mem);
@@ -123,6 +129,22 @@ mod tests {
         assert_eq!(part1(input), 5);
     }
 
+    #[test]
+    fn day08_run_sample_loops() {
+        let input = load_input(true);
+        let mem: Vec<Instruction> = input.into_iter().map(|i| parse_instruction(i)).collect();
+        let res = run(mem);
+        assert_eq!(res.terminated, false)
+    }
+
+    #[test]
+    fn day08_run_sample2_terminates() {
+        let inlines = fs::read_to_string("../inputs/day08_sample2").unwrap();
+        let input: Vec<String> = inlines.lines().map(|s| String::from(s)).collect();
+        let mem: Vec<Instruction> = input.into_iter().map(|i| parse_instruction(i)).collect();
+        let res = run(mem);
+        assert_eq!(res.terminated, true)
+    }
     #[test]
     fn day08_parse_instruction() {
         let tests = vec![
