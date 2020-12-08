@@ -17,9 +17,18 @@ impl Problem for Day08 {
     }
 }
 
+fn load_input(sample: bool) -> Vec<String> {
+    let mut path = String::from("../inputs/day08");
+    if sample {
+        path.push_str("_sample");
+    }
+    let inlines = fs::read_to_string(path).unwrap();
+    let result = inlines.lines().map(|s| String::from(s)).collect();
+    result
+}
 struct CPUState {
-    accumulator: usize,
-    pc: usize,
+    acc: i32,
+    pc: isize,
 }
 
 #[derive(Debug, PartialEq)]
@@ -48,23 +57,47 @@ fn parse_instruction(instr: String) -> Instruction {
 }
 
 fn part1(input: Vec<String>) -> i32 {
-    4
-}
+    let mut state = CPUState { acc: 0, pc: 0 };
 
-fn load_input(sample: bool) -> Vec<String> {
-    let mut path = String::from("../inputs/day08");
-    if sample {
-        path.push_str("_sample");
+    let mem: Vec<Instruction> = input.into_iter().map(|i| parse_instruction(i)).collect();
+    //    println!("mem: {:?}", mem);
+
+    let mut c = 0;
+    loop {
+        c += 1;
+        if c > 9000 {
+            break;
+        }
+        let i = &mem[state.pc as usize];
+        match i.op {
+            Ops::ACC => {
+                println!("Accumulate: {}", i.arg);
+                state.acc += i.arg;
+                state.pc += 1;
+            }
+            Ops::JMP => {
+                println!("Jump: {}", i.arg);
+                state.pc += i.arg as isize;
+            }
+            Ops::NOP => {
+                println!("NOP: {}", i.arg);
+                state.pc += 1;
+            }
+        };
     }
-    let inlines = fs::read_to_string(path).unwrap();
-    let result = inlines.lines().map(|s| String::from(s)).collect();
-    result
+    5
 }
 
 #[cfg(test)]
 mod tests {
 
     use crate::*;
+
+    #[test]
+    fn day08_part1_sample() {
+        let input = load_input(true);
+        assert_eq!(part1(input), 5);
+    }
 
     #[test]
     fn day08_parse_instruction() {
@@ -94,11 +127,6 @@ mod tests {
         for t in tests {
             assert_eq!(parse_instruction(t.0.to_string()), t.1);
         }
-    }
-    #[test]
-    fn day08_part1_sample() {
-        let input = load_input(true);
-        assert_eq!(part1(input), 5);
     }
 
     // #[test]
