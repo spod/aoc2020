@@ -1,16 +1,11 @@
 use prob::Problem;
 use std::collections::HashSet;
 use std::fs;
-use std::io::BufRead;
 use std::iter::FromIterator;
 
 pub struct Day05 {}
 
 impl Problem for Day05 {
-    fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
-        todo!()
-    }
-
     fn part_1(&self) -> Result<i32, &str> {
         todo!()
     }

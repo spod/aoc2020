@@ -1,3 +1,7 @@
+use day01::Day01;
+use day08::Day08;
+use prob::Problem;
+
 pub struct Config {
     pub day: i32,
 }
@@ -20,8 +24,23 @@ impl Config {
 
 pub fn run(config: Config) -> Result<(), &'static str> {
     match config.day {
+        8 => {
+            println!("Day 08");
+            let prob: Day08 = day08::Day08 {};
+            let p1 = prob.part_1();
+            match p1 {
+                Ok(solution) => println!("part 1: {}", solution),
+                Err(e) => println!("part 1 error: {}", e),
+            }
+            let p2 = prob.part_2();
+            match p2 {
+                Ok(solution) => println!("part 2: {}", solution),
+                Err(e) => println!("part 2 error: {}", e),
+            }
+            Ok(())
+        }
         1..=31 => {
-            println!("TODO run day {} parts a & b", config.day);
+            println!("TODO run day {} parts 1 & 2", config.day);
             Ok(())
         }
         _ => Err("Solution not implemented yet!"),

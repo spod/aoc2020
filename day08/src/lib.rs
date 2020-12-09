@@ -1,19 +1,18 @@
 use prob::Problem;
 use std::fs;
-use std::io::BufRead;
 pub struct Day08 {}
 
 impl Problem for Day08 {
-    fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
-        todo!()
-    }
-
     fn part_1(&self) -> Result<i32, &str> {
-        todo!()
+        let input = load_input(false);
+        let res = part1(input);
+        Ok(res)
     }
 
     fn part_2(&self) -> Result<i32, &str> {
-        todo!()
+        let input = load_input(false);
+        let res = part2(input);
+        Ok(res)
     }
 }
 

@@ -1,13 +1,9 @@
 use prob::Problem;
-use std::{collections::HashSet, io::BufRead};
+use std::collections::HashSet;
 
 pub struct Day04 {}
 
 impl Problem for Day04 {
-    fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
-        todo!()
-    }
-
     fn part_1(&self) -> Result<i32, &str> {
         todo!()
     }

@@ -2,7 +2,7 @@
 default:	fmt build run
 
 # TODO source from os env
-day = 04
+day = 08
 
 build:
 	#@cargo build --quiet
@@ -10,7 +10,8 @@ build:
 
 run:
 	#@cargo run  --quiet --bin aoc $(day)
-	cargo run --bin aoc $(day)
+	#cargo run --bin aoc $(day)
+	cd target && ./debug/aoc $(day)
 
 test:
 	cargo test --package day$(day)

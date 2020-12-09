@@ -1,14 +1,8 @@
 use prob::Problem;
-use std::collections::HashMap;
 use std::fs;
-use std::io::BufRead;
 pub struct Day07 {}
 
 impl Problem for Day07 {
-    fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
-        todo!()
-    }
-
     fn part_1(&self) -> Result<i32, &str> {
         todo!()
     }

@@ -1,5 +1,5 @@
 use prob::Problem;
-use std::{collections::HashSet, io::BufRead};
+use std::collections::HashSet;
 
 pub struct Day01 {
     input: Vec<i32>,
@@ -20,10 +20,6 @@ impl Problem for Day01 {
             -1 => Err("invalid input"),
             _ => Ok(result),
         };
-    }
-
-    fn new(&self, _input: &dyn BufRead) -> &'static dyn Problem {
-        todo!()
     }
 }
 
